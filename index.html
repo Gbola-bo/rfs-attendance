@@ -5,12 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>RFS Student Check-In</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
@@ -20,7 +16,7 @@
             align-items: center;
             padding: 20px;
         }
-        
+
         .container {
             background: white;
             padding: 40px 30px;
@@ -29,23 +25,11 @@
             max-width: 450px;
             width: 100%;
         }
-        
-        .header {
-            text-align: center;
-            margin-bottom: 30px;
-        }
-        
-        .header h1 {
-            color: #667eea;
-            font-size: 32px;
-            margin-bottom: 8px;
-        }
-        
-        .header p {
-            color: #666;
-            font-size: 16px;
-        }
-        
+
+        .header { text-align: center; margin-bottom: 30px; }
+        .header h1 { color: #667eea; font-size: 32px; margin-bottom: 8px; }
+        .header p { color: #666; font-size: 16px; }
+
         .reg-display {
             background: #f8f9fa;
             padding: 20px;
@@ -53,14 +37,9 @@
             margin-bottom: 25px;
             border: 2px dashed #667eea;
         }
-        
-        .reg-label {
-            font-size: 14px;
-            color: #666;
-            margin-bottom: 8px;
-            font-weight: 600;
-        }
-        
+
+        .reg-label { font-size: 14px; color: #666; margin-bottom: 8px; font-weight: 600; }
+
         .reg-format {
             font-size: 24px;
             font-weight: bold;
@@ -68,33 +47,16 @@
             font-family: 'Courier New', monospace;
             letter-spacing: 2px;
         }
-        
-        .reg-format .placeholder {
-            color: #ccc;
-        }
-        
-        .reg-format .filled {
-            color: #667eea;
-        }
-        
-        .form-group {
-            margin-bottom: 20px;
-        }
-        
-        label {
-            display: block;
-            margin-bottom: 8px;
-            color: #333;
-            font-weight: 600;
-            font-size: 14px;
-        }
-        
-        .hint {
-            font-size: 12px;
-            color: #999;
-            margin-top: 4px;
-        }
-        
+
+        .reg-format .placeholder { color: #ccc; }
+        .reg-format .filled { color: #667eea; }
+
+        .form-group { margin-bottom: 20px; }
+
+        label { display: block; margin-bottom: 8px; color: #333; font-weight: 600; font-size: 14px; }
+
+        .hint { font-size: 12px; color: #999; margin-top: 4px; }
+
         input[type="text"] {
             width: 100%;
             padding: 14px 16px;
@@ -105,28 +67,18 @@
             letter-spacing: 2px;
             transition: all 0.3s;
         }
-        
+
         input[type="text"]:focus {
             outline: none;
             border-color: #667eea;
-            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+            box-shadow: 0 0 0 3px rgba(102,126,234,0.1);
         }
-        
-        input.error {
-            border-color: #ef4444;
-        }
-        
-        .error-message {
-            color: #ef4444;
-            font-size: 13px;
-            margin-top: 6px;
-            display: none;
-        }
-        
-        .error-message.show {
-            display: block;
-        }
-        
+
+        input.error { border-color: #ef4444; }
+
+        .error-message { color: #ef4444; font-size: 13px; margin-top: 6px; display: none; }
+        .error-message.show { display: block; }
+
         .location-status {
             text-align: center;
             padding: 12px;
@@ -135,22 +87,11 @@
             font-size: 14px;
             font-weight: 600;
         }
-        
-        .location-status.loading {
-            background: #fef3c7;
-            color: #92400e;
-        }
-        
-        .location-status.success {
-            background: #d1fae5;
-            color: #065f46;
-        }
-        
-        .location-status.error {
-            background: #fee2e2;
-            color: #991b1b;
-        }
-        
+
+        .location-status.loading { background: #fef3c7; color: #92400e; }
+        .location-status.success { background: #d1fae5; color: #065f46; }
+        .location-status.error   { background: #fee2e2; color: #991b1b; }
+
         .btn {
             width: 100%;
             padding: 16px;
@@ -163,20 +104,11 @@
             cursor: pointer;
             transition: transform 0.2s, opacity 0.3s;
         }
-        
-        .btn:hover:not(:disabled) {
-            transform: translateY(-2px);
-        }
-        
-        .btn:active:not(:disabled) {
-            transform: translateY(0);
-        }
-        
-        .btn:disabled {
-            opacity: 0.5;
-            cursor: not-allowed;
-        }
-        
+
+        .btn:hover:not(:disabled) { transform: translateY(-2px); }
+        .btn:active:not(:disabled) { transform: translateY(0); }
+        .btn:disabled { opacity: 0.5; cursor: not-allowed; }
+
         .status-message {
             margin-top: 20px;
             padding: 16px;
@@ -185,311 +117,223 @@
             font-weight: 600;
             display: none;
         }
-        
-        .status-message.success {
-            background: #d1fae5;
-            color: #065f46;
-            display: block;
-        }
-        
-        .status-message.error {
-            background: #fee2e2;
-            color: #991b1b;
-            display: block;
-        }
+
+        .status-message.success { background: #d1fae5; color: #065f46; display: block; }
+        .status-message.error   { background: #fee2e2; color: #991b1b; display: block; }
     </style>
 </head>
 <body>
-    <div class="container">
-        <div class="header">
-            <h1>🏫 RFS Check-In</h1>
-            <p>Rock Foundation School</p>
-        </div>
-        
-        <div class="reg-display">
-            <div class="reg-label">Your Registration Number:</div>
-            <div class="reg-format">
-                RFS / <span id="yearStreamDisplay" class="placeholder">____</span> / <span id="serialDisplay" class="placeholder">___</span>
-            </div>
-        </div>
-        
-        <div class="location-status loading" id="locationStatus">
-            📍 Getting your location...
-        </div>
-        
-        <form id="checkInForm">
-            <div class="form-group">
-                <label for="yearStream">Year + Stream (4 digits)</label>
-                <input 
-                    type="text" 
-                    id="yearStream" 
-                    maxlength="4" 
-                    placeholder="2601"
-                    autocomplete="off"
-                    inputmode="numeric"
-                >
-                <div class="hint">First 2 = Year (20-99), Last 2 = Stream (01, 02, or 03)</div>
-                <div class="error-message" id="yearStreamError"></div>
-            </div>
-            
-            <div class="form-group">
-                <label for="serial">Student Number (3 digits)</label>
-                <input 
-                    type="text" 
-                    id="serial" 
-                    maxlength="3" 
-                    placeholder="001"
-                    autocomplete="off"
-                    inputmode="numeric"
-                >
-                <div class="hint">Your registration number: 001 to 999</div>
-                <div class="error-message" id="serialError"></div>
-            </div>
-            
-            <button type="submit" class="btn" id="submitBtn">
-                ✓ Check In Now
-            </button>
-        </form>
-        
-        <div class="status-message" id="statusMessage"></div>
+<div class="container">
+    <div class="header">
+        <h1>🏫 RFS Check-In</h1>
+        <p>Rock Foundation School</p>
     </div>
 
-    <script>
-        // 🔹 CONFIGURATION - REPLACE WITH YOUR WEB APP URL
-        const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwCLL5skg96Twv3y8AyO_K2XDRccHagRB6Rmsj0nn7IGa9k8A6m96i83F2R4GuxSP8egw/exec';
-        
-        // Campus coordinates (RFS location)
-        const CAMPUS_LAT = 6.44059;
-        const CAMPUS_LNG = 3.50089;
-        const MAX_DISTANCE_KM = 100; // 500 meters
-        
-        let userLocation = null;
-        
-        // Get DOM elements
-        const yearStreamInput = document.getElementById('yearStream');
-        const serialInput = document.getElementById('serial');
-        const yearStreamDisplay = document.getElementById('yearStreamDisplay');
-        const serialDisplay = document.getElementById('serialDisplay');
-        const yearStreamError = document.getElementById('yearStreamError');
-        const serialError = document.getElementById('serialError');
-        const locationStatus = document.getElementById('locationStatus');
-        const submitBtn = document.getElementById('submitBtn');
-        const statusMessage = document.getElementById('statusMessage');
-        const form = document.getElementById('checkInForm');
-        
-        // Get user's location
-        function getLocation() {
-            if (navigator.geolocation) {
-                navigator.geolocation.getCurrentPosition(
-                    function(position) {
-                        userLocation = {
-                            latitude: position.coords.latitude,
-                            longitude: position.coords.longitude
-                        };
-                        
-                        // Check if on campus
-                        const distance = calculateDistance(
-                            CAMPUS_LAT, CAMPUS_LNG,
-                            userLocation.latitude, userLocation.longitude
-                        );
-                        
-                        if (distance <= MAX_DISTANCE_KM) {
-                            locationStatus.className = 'location-status success';
-                            locationStatus.textContent = `✅ On campus (${Math.round(distance * 1000)}m from center)`;
-                        } else {
-                            locationStatus.className = 'location-status error';
-                            locationStatus.textContent = `❌ Off campus (${distance.toFixed(2)}km away - must be within 500m)`;
-                            submitBtn.disabled = true;
-                        }
-                    },
-                    function(error) {
-                        locationStatus.className = 'location-status error';
-                        locationStatus.textContent = '❌ Location access denied - please enable location';
-                        submitBtn.disabled = true;
-                    }
-                );
-            } else {
-                locationStatus.className = 'location-status error';
-                locationStatus.textContent = '❌ Location not supported on this device';
-                submitBtn.disabled = true;
-            }
+    <div class="reg-display">
+        <div class="reg-label">Your Registration Number:</div>
+        <div class="reg-format">
+            RFS / <span id="yearStreamDisplay" class="placeholder">____</span> / <span id="serialDisplay" class="placeholder">___</span>
+        </div>
+    </div>
+
+    <div class="location-status loading" id="locationStatus">
+        📍 Getting your location...
+    </div>
+
+    <form id="checkInForm">
+        <div class="form-group">
+            <label for="yearStream">Year + Stream (4 digits)</label>
+            <input type="text" id="yearStream" maxlength="4" placeholder="2601" autocomplete="off" inputmode="numeric">
+            <div class="hint">First 2 = Year (20-99), Last 2 = Stream (01, 02, or 03)</div>
+            <div class="error-message" id="yearStreamError"></div>
+        </div>
+
+        <div class="form-group">
+            <label for="serial">Student Number (3 digits)</label>
+            <input type="text" id="serial" maxlength="3" placeholder="001" autocomplete="off" inputmode="numeric">
+            <div class="hint">Your registration number: 001 to 999</div>
+            <div class="error-message" id="serialError"></div>
+        </div>
+
+        <button type="submit" class="btn" id="submitBtn">✓ Check In Now</button>
+    </form>
+
+    <div class="status-message" id="statusMessage"></div>
+</div>
+
+<script>
+    // ======================================================
+    // 🔹 PASTE YOUR APPS SCRIPT URL HERE (keep the quotes)
+    // ======================================================
+    const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwCLL5skg96Twv3y8AyO_K2XDRccHagRB6Rmsj0nn7IGa9k8A6m96i83F2R4GuxSP8egw/exec';
+
+    // Campus coordinates
+    const CAMPUS_LAT     = 6.44059;
+    const CAMPUS_LNG     = 3.50089;
+    const MAX_DISTANCE_M = 500; // metres
+
+    let userLocation = null;
+
+    const yearStreamInput   = document.getElementById('yearStream');
+    const serialInput       = document.getElementById('serial');
+    const yearStreamDisplay = document.getElementById('yearStreamDisplay');
+    const serialDisplay     = document.getElementById('serialDisplay');
+    const yearStreamError   = document.getElementById('yearStreamError');
+    const serialError       = document.getElementById('serialError');
+    const locationStatus    = document.getElementById('locationStatus');
+    const submitBtn         = document.getElementById('submitBtn');
+    const statusMessage     = document.getElementById('statusMessage');
+    const form              = document.getElementById('checkInForm');
+
+    // ── Location ──────────────────────────────────────────
+    function getLocation() {
+        if (!navigator.geolocation) {
+            setLocationError('❌ Location not supported on this device');
+            return;
         }
-        
-        // Calculate distance between two coordinates (Haversine formula)
-        function calculateDistance(lat1, lon1, lat2, lon2) {
-            const R = 6371; // Earth's radius in km
-            const dLat = (lat2 - lat1) * Math.PI / 180;
-            const dLon = (lon2 - lon1) * Math.PI / 180;
-            const a = 
-                Math.sin(dLat/2) * Math.sin(dLat/2) +
-                Math.cos(lat1 * Math.PI / 180) * Math.cos(lat2 * Math.PI / 180) *
-                Math.sin(dLon/2) * Math.sin(dLon/2);
-            const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
-            return R * c;
-        }
-        
-        // Real-time display update
-        yearStreamInput.addEventListener('input', function() {
-            const value = this.value;
-            yearStreamDisplay.textContent = value || '____';
-            yearStreamDisplay.className = value ? 'filled' : 'placeholder';
-            validateYearStream();
-        });
-        
-        serialInput.addEventListener('input', function() {
-            const value = this.value;
-            serialDisplay.textContent = value || '___';
-            serialDisplay.className = value ? 'filled' : 'placeholder';
-            validateSerial();
-        });
-        
-        // Validation functions
-        function validateYearStream() {
-            const value = yearStreamInput.value;
-            yearStreamInput.classList.remove('error');
-            yearStreamError.classList.remove('show');
-            
-            if (value.length === 0) return true;
-            
-            if (value.length !== 4) {
-                showError(yearStreamInput, yearStreamError, 'Must be exactly 4 digits');
-                return false;
-            }
-            
-            if (!/^\d{4}$/.test(value)) {
-                showError(yearStreamInput, yearStreamError, 'Must contain only numbers');
-                return false;
-            }
-            
-            const year = parseInt(value.substring(0, 2));
-            if (year < 20 || year > 99) {
-                showError(yearStreamInput, yearStreamError, 'Year must be 20-99');
-                return false;
-            }
-            
-            const stream = value.substring(2, 4);
-            if (stream !== '01' && stream !== '02' && stream !== '03') {
-                showError(yearStreamInput, yearStreamError, 'Stream must be 01, 02, or 03');
-                return false;
-            }
-            
-            return true;
-        }
-        
-        function validateSerial() {
-            const value = serialInput.value;
-            serialInput.classList.remove('error');
-            serialError.classList.remove('show');
-            
-            if (value.length === 0) return true;
-            
-            if (value.length !== 3) {
-                showError(serialInput, serialError, 'Must be exactly 3 digits');
-                return false;
-            }
-            
-            if (!/^\d{3}$/.test(value)) {
-                showError(serialInput, serialError, 'Must contain only numbers');
-                return false;
-            }
-            
-            const num = parseInt(value);
-            if (num < 1 || num > 999) {
-                showError(serialInput, serialError, 'Must be between 001 and 999');
-                return false;
-            }
-            
-            return true;
-        }
-        
-        function showError(input, errorElement, message) {
-            input.classList.add('error');
-            errorElement.textContent = message;
-            errorElement.classList.add('show');
-        }
-        
-        // Form submission
-        form.addEventListener('submit', async function(e) {
-            e.preventDefault();
-            
-            // Validate location
-            if (!userLocation) {
-                showStatus('error', '❌ Location not available. Please allow location access.');
-                return;
-            }
-            
-            const distance = calculateDistance(
-                CAMPUS_LAT, CAMPUS_LNG,
-                userLocation.latitude, userLocation.longitude
-            );
-            
-            if (distance > MAX_DISTANCE_KM) {
-                showStatus('error', `❌ You must be on campus to check in. You are ${distance.toFixed(2)}km away.`);
-                return;
-            }
-            
-            // Validate inputs
-            if (!validateYearStream() || !validateSerial()) {
-                showStatus('error', '❌ Please fix the errors above');
-                return;
-            }
-            
-            if (!yearStreamInput.value || !serialInput.value) {
-                showStatus('error', '❌ Please fill in all fields');
-                return;
-            }
-            
-            // Disable button and show loading
-            submitBtn.disabled = true;
-            submitBtn.textContent = '⏳ Submitting...';
-            
-            try {
-                const response = await fetch(SCRIPT_URL, {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify({
-                        yearStream: yearStreamInput.value,
-                        serial: serialInput.value,
-                        latitude: userLocation.latitude,
-                        longitude: userLocation.longitude
-                    })
-                });
-                
-                const data = await response.json();
-                
-                if (data.status === 'success') {
-                    showStatus('success', `✅ Check-in successful! Your reg number: ${data.regNumber}`);
-                    form.reset();
-                    yearStreamDisplay.textContent = '____';
-                    yearStreamDisplay.className = 'placeholder';
-                    serialDisplay.textContent = '___';
-                    serialDisplay.className = 'placeholder';
+        navigator.geolocation.getCurrentPosition(
+            function(pos) {
+                userLocation = { latitude: pos.coords.latitude, longitude: pos.coords.longitude };
+                const dist = calcDistance(CAMPUS_LAT, CAMPUS_LNG, userLocation.latitude, userLocation.longitude);
+                if (dist <= MAX_DISTANCE_M) {
+                    locationStatus.className = 'location-status success';
+                    locationStatus.textContent = '✅ On campus (' + Math.round(dist) + 'm from center)';
                 } else {
-                    showStatus('error', '❌ ' + data.message);
+                    setLocationError('❌ Off campus (' + (dist/1000).toFixed(2) + 'km away — must be within 500m)');
                 }
-            } catch (error) {
-                showStatus('error', '❌ Connection error. Please try again.');
-            } finally {
-                submitBtn.disabled = false;
-                submitBtn.textContent = '✓ Check In Now';
-            }
-        });
-        
-        function showStatus(type, message) {
-            statusMessage.className = 'status-message ' + type;
-            statusMessage.textContent = message;
-            
-            if (type === 'success') {
-                setTimeout(() => {
-                    statusMessage.className = 'status-message';
-                }, 5000);
-            }
+            },
+            function() { setLocationError('❌ Location access denied — please enable location'); }
+        );
+    }
+
+    function setLocationError(msg) {
+        locationStatus.className = 'location-status error';
+        locationStatus.textContent = msg;
+        submitBtn.disabled = true;
+    }
+
+    function calcDistance(lat1, lon1, lat2, lon2) {
+        const R = 6371000;
+        const dLat = (lat2 - lat1) * Math.PI / 180;
+        const dLon = (lon2 - lon1) * Math.PI / 180;
+        const a = Math.sin(dLat/2) * Math.sin(dLat/2) +
+                  Math.cos(lat1 * Math.PI / 180) * Math.cos(lat2 * Math.PI / 180) *
+                  Math.sin(dLon/2) * Math.sin(dLon/2);
+        return R * 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+    }
+
+    // ── Live display ──────────────────────────────────────
+    yearStreamInput.addEventListener('input', function() {
+        yearStreamDisplay.textContent = this.value || '____';
+        yearStreamDisplay.className = this.value ? 'filled' : 'placeholder';
+        validateYearStream();
+    });
+
+    serialInput.addEventListener('input', function() {
+        serialDisplay.textContent = this.value || '___';
+        serialDisplay.className = this.value ? 'filled' : 'placeholder';
+        validateSerial();
+    });
+
+    // ── Validation ────────────────────────────────────────
+    function validateYearStream() {
+        var v = yearStreamInput.value;
+        clearErr(yearStreamInput, yearStreamError);
+        if (!v) return true;
+        if (!/^\d{4}$/.test(v)) return showErr(yearStreamInput, yearStreamError, 'Must be exactly 4 digits');
+        if (parseInt(v.slice(0,2)) < 20) return showErr(yearStreamInput, yearStreamError, 'Year must be 20-99');
+        if (!['01','02','03'].includes(v.slice(2))) return showErr(yearStreamInput, yearStreamError, 'Stream must be 01, 02, or 03');
+        return true;
+    }
+
+    function validateSerial() {
+        var v = serialInput.value;
+        clearErr(serialInput, serialError);
+        if (!v) return true;
+        if (!/^\d{3}$/.test(v)) return showErr(serialInput, serialError, 'Must be exactly 3 digits');
+        if (parseInt(v) < 1)    return showErr(serialInput, serialError, 'Must be between 001 and 999');
+        return true;
+    }
+
+    function showErr(input, el, msg) {
+        input.classList.add('error');
+        el.textContent = msg;
+        el.classList.add('show');
+        return false;
+    }
+
+    function clearErr(input, el) {
+        input.classList.remove('error');
+        el.classList.remove('show');
+    }
+
+    // ── Submit ────────────────────────────────────────────
+    form.addEventListener('submit', async function(e) {
+        e.preventDefault();
+
+        if (!userLocation) {
+            showStatus('error', '❌ Location not available. Please allow location access.');
+            return;
         }
-        
-        // Get location on page load
-        getLocation();
-    </script>
+
+        var dist = calcDistance(CAMPUS_LAT, CAMPUS_LNG, userLocation.latitude, userLocation.longitude);
+        if (dist > MAX_DISTANCE_M) {
+            showStatus('error', '❌ You must be on campus. You are ' + (dist/1000).toFixed(2) + 'km away.');
+            return;
+        }
+
+        if (!validateYearStream() || !validateSerial()) {
+            showStatus('error', '❌ Please fix the errors above');
+            return;
+        }
+
+        if (!yearStreamInput.value || !serialInput.value) {
+            showStatus('error', '❌ Please fill in all fields');
+            return;
+        }
+
+        submitBtn.disabled = true;
+        submitBtn.textContent = '⏳ Submitting...';
+
+        try {
+            // ✅ GET request with URL params — 100% CORS-safe with Google Apps Script
+            var url = SCRIPT_URL
+                + '?yearStream=' + encodeURIComponent(yearStreamInput.value)
+                + '&serial='     + encodeURIComponent(serialInput.value)
+                + '&latitude='   + encodeURIComponent(userLocation.latitude)
+                + '&longitude='  + encodeURIComponent(userLocation.longitude);
+
+            var response = await fetch(url);
+            var data = await response.json();
+
+            if (data.status === 'success') {
+                showStatus('success', '✅ Check-in successful! Reg: ' + data.regNumber);
+                form.reset();
+                yearStreamDisplay.textContent = '____';
+                yearStreamDisplay.className   = 'placeholder';
+                serialDisplay.textContent     = '___';
+                serialDisplay.className       = 'placeholder';
+            } else {
+                showStatus('error', '❌ ' + data.message);
+            }
+
+        } catch (error) {
+            showStatus('error', '❌ Connection error. Please try again.');
+        } finally {
+            submitBtn.disabled = false;
+            submitBtn.textContent = '✓ Check In Now';
+        }
+    });
+
+    function showStatus(type, msg) {
+        statusMessage.className = 'status-message ' + type;
+        statusMessage.textContent = msg;
+        if (type === 'success') {
+            setTimeout(function() { statusMessage.className = 'status-message'; }, 5000);
+        }
+    }
+
+    getLocation();
+</script>
 </body>
 </html>
